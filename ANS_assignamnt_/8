@@ -1,0 +1,31 @@
+1. No, the Python Standard Library is not included with PyInputPlus. PyInputPlus is a separate third-party library for input validation and handling, and it does not come bundled with the Python Standard Library.
+
+2. PyInputPlus is commonly imported with the alias "pypi" (or any other alias) to make the code more concise and readable. Using an alias like "pypi" allows you to use shorter function calls, such as `pypi.inputInt()` instead of `pyinputplus.inputInt()`, which can make your code more compact and easier to understand.
+
+3. You can distinguish between `inputInt()` and `inputFloat()` based on the type of input they expect. 
+   - `inputInt()` expects the user to enter an integer value, and it will raise an error if the input is not a valid integer.
+   - `inputFloat()` expects the user to enter a floating-point number (a number with decimal points), and it will raise an error if the input is not a valid float.
+
+4. To ensure that the user enters a whole number between 0 and 99 using PyInputPlus, you can use the `min` and `max` arguments as follows:
+
+```python
+import pyinputplus as pyip
+
+result = pyip.inputInt(prompt="Enter a number between 0 and 99: ", min=0, max=99)
+```
+
+This code will repeatedly prompt the user until they enter a valid integer between 0 and 99.
+
+5. The `allowRegexes` and `blockRegexes` keyword arguments in PyInputPlus allow you to specify regular expressions that control which inputs are accepted and which are blocked. 
+   - `allowRegexes` is a list of regular expressions. If any of these regular expressions match the input, it is allowed.
+   - `blockRegexes` is a list of regular expressions. If any of these regular expressions match the input, it is blocked.
+
+You can use these arguments to customize input validation based on regular expressions.
+
+6. If a blank input is entered three times with `inputStr(limit=3)`, PyInputPlus will raise a `pyinputplus.RetryLimitException`. This exception indicates that the user has exceeded the allowed number of retries (in this case, three) without providing valid input.
+
+7. If blank input is entered three times with `inputStr(limit=3, default='hello')`, PyInputPlus will return the default value `'hello'` after the third unsuccessful attempt to get valid input. So, it will not raise an exception but will provide the default value instead.
+
+import pyinputplus as pyip
+
+result = pyip.inputInt(prompt="Enter a number between 0 and 99: ", min=0, max=99)
